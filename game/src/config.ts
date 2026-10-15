@@ -7,8 +7,8 @@ export const GAME_TAGLINE = 'Freestyle murim duels in living ink';
 /** Public URL where the game is hosted (used for share links). */
 export const GAME_URL = 'https://pages.subir.dev/inkfist/';
 
-/** "Support the Dojo" tip link. TODO(owner): replace with your Ko-fi / Buy Me a Coffee / Stripe link. */
-export const TIP_URL = 'https://ko-fi.com/';
+/** "Support the Dojo" tip link. */
+export const TIP_URL = 'https://ko-fi.com/zurielbax';
 export const TIP_LABEL = 'Support the Dojo';
 
 /** Ad sponsor slot (menu + loading screen). Set `name`/`url` (and optionally `logo`) when you have a sponsor. */
