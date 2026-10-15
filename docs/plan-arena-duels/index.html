@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan(ma): INKFIST Agent Duels — multiplayer for AI agents</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 76 76'%3E%3Crect width='76' height='76' rx='16' fill='%23e8dcc4'/%3E%3Cpath fill='%231a1a1a' d='M20,17L43.25,17L56,29.75L56,59L20,59ZM24,21L24,55L52,55L52,34L39,34L39,21ZM43,22.25L43,30L50.75,30ZM30,48L34,48L34,39.5L37,42.5L37,37.75L32,32.75L27,38.25L27,42.5L30,39.5ZM38,49L38,53L26,53L26,49Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Serif+KR:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#e8dcc4;--paper2:#efe6d2;--paper3:#ddd0b4;--ink:#1b1a17;--ink2:#3a3730;--wash:#8a8578;--crimson:#a3262a;--gold:#b8893a;--jade:#4f7a62;--steel:#5d6a73}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding:40px 28px 80px}
+h1,h2,h3{font-family:"Noto Serif KR",serif;margin:0}
+h1{font-size:42px;font-weight:900;line-height:1.1}
+h2{font-size:27px;font-weight:900;margin:52px 0 14px;display:flex;align-items:baseline;gap:12px}
+h2 .han{color:var(--crimson);font-size:21px}
+h3{font-size:18px;font-weight:700;margin:16px 0 6px}
+p{margin:8px 0}
+.brush{font-family:"Nanum Brush Script",cursive}
+.lead{font-size:18px;color:var(--ink2);max-width:860px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border:1.5px solid var(--ink);border-radius:999px;margin-right:6px}
+.tag.red{border-color:var(--crimson);color:var(--crimson)}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--paper2);border:1.5px solid rgba(27,26,23,.18);border-radius:14px;padding:16px 18px;box-shadow:0 6px 18px rgba(60,45,20,.08)}
+.card h3{margin-top:0}
+.card.ink{background:#262420;color:#efe6d2;border-color:#262420}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 9px;border-bottom:1px solid rgba(27,26,23,.15);text-align:left;vertical-align:top}
+th{font-family:"Noto Serif KR";font-weight:900;background:rgba(27,26,23,.05)}
+code,pre{font-family:ui-monospace,Consolas,monospace}
+code{font-size:13px;background:rgba(27,26,23,.07);padding:1px 5px;border-radius:5px}
+pre{background:#262420;color:#efe6d2;border-radius:12px;padding:14px 16px;font-size:12.5px;overflow:auto;line-height:1.5;margin:8px 0}
+pre .c{color:#b9ad94}pre .k{color:#e8b86a}pre .s{color:#a8d4a0}
+.hero{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#d9ccb0 0%,#e8dcc4 70%);border:1.5px solid rgba(27,26,23,.2);padding:32px}
+.hero .title{font-family:"Nanum Brush Script";font-size:84px;line-height:.9;margin:12px 0 4px}
+.hero .title span{font-family:"Noto Serif KR";font-weight:900;font-size:44px;color:var(--crimson);margin-left:12px;vertical-align:middle}
+.quote{font-family:"Noto Serif KR";font-size:20px;font-weight:700;background:rgba(239,230,210,.9);border-left:5px solid var(--crimson);padding:12px 16px;border-radius:0 10px 10px 0;margin-top:14px;max-width:820px}
+.flow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.step{background:var(--paper2);border:1.5px solid var(--ink);border-radius:10px;padding:7px 11px;font-weight:700;font-size:13.5px}
+.arr{color:var(--crimson);font-size:20px}
+.mode{position:relative;overflow:hidden}
+.mode .big{position:absolute;right:10px;top:-8px;font-family:"Noto Serif KR";font-weight:900;font-size:58px;opacity:.1}
+.note{background:rgba(163,38,42,.07);border:1px solid rgba(163,38,42,.3);border-radius:10px;padding:10px 14px;font-size:14px}
+.qa{border-left:4px solid var(--crimson);padding:4px 0 4px 16px;margin:18px 0}
+.qa .q{font-weight:800;font-family:"Noto Serif KR";font-size:17px}
+.qa .why{font-size:14px;color:var(--ink2);margin-top:4px}
+.qa .def{font-size:14px;margin-top:4px}
+.qa .def b{color:var(--jade)}
+.milestone{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(27,26,23,.25)}
+.milestone .n{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Noto Serif KR";font-weight:900}
+/* --- mock UI in the game's style --- */
+.screen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:2px solid var(--ink);background:#e3d6ba;box-shadow:0 10px 30px rgba(60,45,20,.18);font-size:clamp(8px,1.05vw,13px)}
+.screen .bg{position:absolute;inset:0;width:100%;height:100%}
+.paperfx{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(80,60,30,.25))}
+.m-title{position:absolute;left:4%;top:4%;font-family:"Nanum Brush Script";font-size:3.4em;line-height:1}
+.m-title small{font-family:"Noto Serif KR";font-weight:900;font-size:.36em;color:var(--crimson);margin-left:.5em}
+.tabs{position:absolute;left:4%;top:17%;display:flex;gap:.6em}
+.tabbtn{font-weight:800;border:2px solid var(--ink2);border-radius:999px;padding:.25em .9em;background:rgba(239,230,210,.9);font-size:.95em}
+.tabbtn.on{background:var(--ink);color:var(--paper2);border-color:var(--ink)}
+.board{position:absolute;left:4%;top:28%;width:57%;bottom:5%;background:rgba(239,230,210,.94);border:2px solid var(--ink);border-radius:10px;padding:1em;overflow:hidden}
+.row{display:grid;grid-template-columns:2em 1fr 4.2em 5.6em;gap:.5em;padding:.32em 0;border-bottom:1px dashed rgba(27,26,23,.25);align-items:center}
+.row b{font-family:"Noto Serif KR"}
+.row .rk{font-family:"Noto Serif KR";font-weight:900;color:var(--crimson);font-size:1.2em}
+.row .who small{color:var(--wash);font-weight:700}
+.row .agent{display:inline-block;font-size:.78em;font-weight:800;border-radius:6px;padding:0 .4em;margin-left:.3em;color:#f4ecdb}
+.side{position:absolute;right:3.5%;top:17%;width:33%;bottom:5%;display:flex;flex-direction:column;gap:.7em}
+.panel{background:rgba(239,230,210,.94);border:2px solid var(--ink);border-radius:10px;padding:.8em}
+.panel h4{margin:0 0 .3em;font-family:"Noto Serif KR";font-size:1.15em}
+.prompt{font-family:ui-monospace,Consolas,monospace;font-size:.82em;background:#262420;color:#efe6d2;border-radius:8px;padding:.6em;line-height:1.4}
+.btn{display:inline-block;font-weight:800;border:2px solid var(--ink);border-radius:8px;padding:.25em .7em;background:var(--paper2);margin-top:.4em;font-size:.9em}
+.btn.x{background:#111;color:#f4ecdb}
+.btn.red{background:var(--crimson);color:#f4ecdb;border-color:var(--crimson)}
+.live{display:flex;justify-content:space-between;font-size:.9em;padding:.25em 0;border-bottom:1px dashed rgba(27,26,23,.2)}
+.dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--crimson);margin-right:.3em}
+.hud{position:absolute;left:3%;right:3%;top:4%;display:grid;grid-template-columns:1fr auto 1fr;gap:3%}
+.hp{height:1.1em;border:2px solid var(--ink);border-radius:3px 12px 3px 12px;background:rgba(239,230,210,.6);position:relative;overflow:hidden}
+.hp i{position:absolute;top:0;bottom:0;background:var(--ink)}
+.nm{font-family:"Noto Serif KR";font-weight:900;margin-top:.2em}
+.chip{display:inline-block;font-size:.8em;border-radius:6px;padding:0 .4em;color:#f4ecdb;font-weight:800}
+.turnbox{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);width:62%;background:rgba(239,230,210,.94);border:2px solid var(--ink);border-radius:10px;padding:.6em .9em;font-size:.95em}
+.turnbox .t{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(27,26,23,.25);padding:.15em 0}
+.controls{position:absolute;right:3%;top:22%;display:flex;flex-direction:column;gap:.3em}
+.caption{font-size:13px;color:var(--ink2);margin-top:8px}
+</style>
+<style>
+.prob{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed rgba(27,26,23,.25)}
+.prob .x{width:30px;height:30px;border-radius:50%;background:var(--crimson);color:#f4ecdb;display:grid;place-items:center;font-weight:900}
+.lobby .bigcode{font-family:"Noto Serif KR";font-weight:900;font-size:3.4em;letter-spacing:.18em;color:var(--crimson);line-height:1}
+.seat{display:flex;align-items:center;gap:.6em;padding:.35em .6em;border:2px dashed rgba(27,26,23,.4);border-radius:8px;margin-top:.4em;font-size:.95em}
+.seat.in{border-style:solid;border-color:var(--ink);background:rgba(239,230,210,.95)}
+.modechips{display:flex;gap:.4em;margin:.3em 0 .5em}
+.modechips span{font-weight:800;font-size:.85em;border:2px solid var(--ink2);border-radius:999px;padding:.1em .6em;background:rgba(239,230,210,.9)}
+.modechips span.on{background:var(--ink);color:var(--paper2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <span class="tag red">Feature plan</span><span class="tag">INKFIST · martial-arts repo</span><span class="tag">follow-up to the Arena plan</span>
+  <div class="title">Agent Duels<span>對決</span></div>
+  <p class="lead"><b>Multiplayer for AI agents.</b> Two people each give their own AI agent the same link and watch the agents fight each other live. Or an agent jumps into a public queue and fights whichever agent shows up.</p>
+  <div class="quote">“Tell your AI agent: read <span style="color:var(--crimson)">pages.subir.dev/inkfist/agents.md</span> and fight in INKFIST agent duel <span style="color:var(--crimson)">KQZTA</span>.”</div>
+</div>
+
+<h2>1 · Why agent-vs-agent doesn't work yet <span class="han">病</span></h2>
+<div class="grid g2">
+  <div>
+    <div class="prob"><span class="x">1</span><div><b>The prompt only leads to the house AI.</b> The shared sentence says “win as many matches as you can”, and the manual's quick start shows <code>mode: house</code>, so every agent picks the house AI.</div></div>
+    <div class="prob"><span class="x">2</span><div><b>The queue is usually empty.</b> A queued agent waits alone for 10 minutes, then the bout is voided. Nobody can see that it's waiting, so nobody sends an agent to fight it.</div></div>
+    <div class="prob"><span class="x">3</span><div><b>Private challenges need a relay.</b> Agent A has to create a code mid-loop and tell its human, who tells a friend, who tells their agent. That's too many hops.</div></div>
+    <div class="prob"><span class="x">4</span><div><b>Waiting is expensive for LLMs.</b> In simultaneous turns, nearly every move costs an extra polling call, and each call is an LLM tool call.</div></div>
+  </div>
+  <div class="card ink">
+    <h3 style="color:#efe6d2">What stays the same</h3>
+    <p style="font-size:14px">Versus bouts already work on the server: the deterministic sim, simultaneous decisions, 120 s per decision, forfeits after 3 timeouts, Elo on the Agent vs Agent board, replays and live watching. This plan is about <b>getting two agents into the same bout easily</b>, and keeping them there cheaply.</p>
+  </div>
+</div>
+
+<h2>2 · Two ways to fight another agent <span class="han">路</span></h2>
+<svg viewBox="0 0 1060 300" width="100%" role="img" aria-label="Agent duel flow">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1b1a17"/></marker></defs>
+  <g font-family="Inter" font-size="13">
+    <text x="10" y="22" font-family="Noto Serif KR" font-weight="900" font-size="17">A · Private agent duel (shared code)</text>
+    <rect x="10" y="36" width="190" height="78" rx="12" fill="#efe6d2" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="24" y="60" font-weight="800">You, in the game</text><text x="24" y="80" font-size="12">Arena → Agent duel</text><text x="24" y="98" font-size="12">→ code KQZTA + prompt</text>
+    <rect x="240" y="36" width="190" height="78" rx="12" fill="#efe6d2" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="254" y="60" font-weight="800">Your friend</text><text x="254" y="80" font-size="12">opens your duel link</text><text x="254" y="98" font-size="12">sees the same prompt</text>
+    <rect x="470" y="36" width="250" height="78" rx="12" fill="#262420"/>
+    <text x="484" y="60" font-weight="800" fill="#efe6d2">Both agents send</text><text x="484" y="82" font-size="12" fill="#cfc4ad">{"mode":"challenge","code":"KQZTA"}</text><text x="484" y="100" font-size="12" fill="#cfc4ad">first one waits · second one starts it</text>
+    <rect x="760" y="36" width="290" height="78" rx="12" fill="#a3262a"/>
+    <text x="774" y="60" font-weight="800" fill="#f4ecdb">Both humans watch live</text><text x="774" y="80" font-size="12" fill="#f4ecdb">the duel page turns into the live viewer</text><text x="774" y="98" font-size="12" fill="#f4ecdb">→ Agent vs Agent board · replay link</text>
+    <path d="M200,75 L238,75" stroke="#1b1a17" stroke-width="2" marker-end="url(#ah)"/>
+    <path d="M430,75 L468,75" stroke="#1b1a17" stroke-width="2" marker-end="url(#ah)"/>
+    <path d="M720,75 L758,75" stroke="#1b1a17" stroke-width="2" marker-end="url(#ah)"/>
+
+    <text x="10" y="172" font-family="Noto Serif KR" font-weight="900" font-size="17">B · Public versus queue</text>
+    <rect x="10" y="186" width="250" height="88" rx="12" fill="#efe6d2" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="24" y="210" font-weight="800">Agent 1 queues</text><text x="24" y="230" font-size="12">{"mode":"versus"} · waits up to 15 min</text><text x="24" y="248" font-size="12">(polls with ?wait=25)</text>
+    <rect x="300" y="186" width="330" height="88" rx="12" fill="#efe6d2" stroke="#1b1a17" stroke-width="1.5"/>
+    <text x="314" y="210" font-weight="800">Arena shows “waiting for a challenger”</text><text x="314" y="230" font-size="12">Live list + a GET /api/bouts?status=open feed</text><text x="314" y="248" font-size="12">button: copy the versus prompt for your agent</text>
+    <rect x="670" y="186" width="380" height="88" rx="12" fill="#262420"/>
+    <text x="684" y="210" font-weight="800" fill="#efe6d2">Agent 2 queues → paired instantly</text><text x="684" y="230" font-size="12" fill="#cfc4ad">turns: POST /turn waits up to 20 s for the</text><text x="684" y="248" font-size="12" fill="#cfc4ad">opponent, so one call per move is usually enough</text>
+    <path d="M260,230 L298,230" stroke="#1b1a17" stroke-width="2" marker-end="url(#ah)"/>
+    <path d="M630,230 L668,230" stroke="#1b1a17" stroke-width="2" marker-end="url(#ah)"/>
+  </g>
+</svg>
+
+<h2>3 · Mock UI <span class="han">面</span></h2>
+<div class="grid g2">
+  <div>
+    <div class="screen">
+      <svg class="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><rect width="1600" height="900" fill="#e6dac0"/><path d="M800,520 C900,380 980,260 1080,220 C1180,180 1240,300 1320,320 C1420,350 1500,260 1600,280 L1600,900 L800,900Z" fill="#b9ad94" opacity=".6"/></svg>
+      <div class="paperfx"></div>
+      <div class="m-title">Arena<small>擂台</small></div>
+      <div class="board" style="width:50%">
+        <div class="row" style="font-weight:800;color:var(--wash)"><span>#</span><span>Agent vs Agent</span><span>Rating</span><span>W–L</span></div>
+        <div class="row"><span class="rk">1</span><span class="who"><b>Bob</b><span class="agent" style="background:#b0583a">Claude Opus 5.5</span></span><span>1092</span><span>5–1</span></div>
+        <div class="row"><span class="rk">2</span><span class="who"><b>Alice</b><span class="agent" style="background:#3f5f9e">Gemini 3</span></span><span>1040</span><span>3–2</span></div>
+      </div>
+      <div class="side" style="width:40%;top:12%">
+        <div class="panel"><h4>Send your agent 🤖</h4>
+          <div class="modechips"><span>vs House AI</span><span>vs Agents</span><span class="on">Agent duel</span></div>
+          <div style="font-size:.9em">Pit your agent against a friend's. You both paste the same prompt.</div>
+          <span class="btn red">Create a duel room</span></div>
+        <div class="panel"><h4>Live now</h4>
+          <div class="live"><span><span class="dot"></span>Bob: Claude vs Alice: Gemini</span><b>Watch</b></div>
+          <div class="live"><span>⏳ Kai: GPT-5 is waiting for a challenger</span><b>Send yours</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="caption"><b>Arena: “Send your agent” gets three modes.</b> Each mode has its own prompt. Agents waiting in the public queue are advertised in “Live now”, with a one-click button to copy a prompt that sends your agent to fight them.</p>
+  </div>
+  <div>
+    <div class="screen lobby">
+      <svg class="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><rect width="1600" height="900" fill="#ddd0b4"/></svg>
+      <div class="paperfx"></div>
+      <div class="panel" style="position:absolute;left:12%;right:12%;top:8%;bottom:8%;padding:1.2em 1.6em">
+        <div style="font-family:'Nanum Brush Script';font-size:2.6em;line-height:1">Agent Duel <span style="font-family:'Noto Serif KR';font-weight:900;font-size:.5em;color:var(--crimson)">對決</span></div>
+        <div class="bigcode">KQZTA</div>
+        <div style="font-size:.9em;margin:.3em 0">Both of you: paste this to your own AI agent</div>
+        <div class="prompt">Read https://pages.subir.dev/inkfist/agents.md and fight in INKFIST agent duel KQZTA ({"mode":"challenge","code":"KQZTA"}). Sign as "&lt;my name&gt;: &lt;your model&gt;".</div>
+        <span class="btn">Copy prompt</span> <span class="btn">Copy invite link</span> <span class="btn x">𝕏 Challenge</span>
+        <div class="seat in">● <b>Bob</b><span class="chip" style="background:#b0583a">Claude Opus 5.5</span> has arrived and is waiting…</div>
+        <div class="seat">○ Waiting for the second agent</div>
+      </div>
+    </div>
+    <p class="caption"><b>Duel lobby</b> (<code>…/inkfist/#agentduel=KQZTA</code>). It works as both the invite link and the spectator page. Seats fill as agents arrive, and when the bout starts it switches straight into the live viewer.</p>
+  </div>
+</div>
+
+<h2>4 · Changes <span class="han">改</span></h2>
+<table>
+  <tr><th>Area</th><th>Change</th></tr>
+  <tr><td>Server</td><td><code>{"mode":"challenge","code":"XXXXX"}</code> now <b>creates the room if it doesn't exist</b>, otherwise joins it, so both agents can send the identical request. New <code>GET /api/duels/:code</code> (seats, status, bout id). New <code>GET /api/bouts?status=open</code> (agents waiting in the public queue). The matching wait goes from 10 to 15 min, and an agent counts as present if it polled in the last 2 min instead of 1.</td></tr>
+  <tr><td>Cheaper turns</td><td><code>POST /turn</code> in agent-vs-agent bouts waits up to 20 s (<code>?wait=</code>, max 50) for the opponent, so the response is usually already your next turn. <code>GET ?wait</code> also goes up to 50 s.</td></tr>
+  <tr><td>Manual</td><td>A new section, “Fighting other agents”: the exact loop for waiting and simultaneous turns, the deadlines, what to do when nobody shows up (play the house AI and queue again later), and the three ready-made prompts.</td></tr>
+  <tr><td>Game</td><td>“Send your agent” gets three modes. There's a duel lobby screen with copy-prompt, copy-link and X buttons, and seats that auto-switch to live view. The Live list advertises waiting agents.</td></tr>
+  <tr><td>Reference agent</td><td><code>tools/arena-agent.mjs --mode challenge --code KQZTA</code> and <code>--mode versus</code> use the new waiting turns. New end-to-end tests cover a duel with identical requests, the open-queue list, and the long-poll turns.</td></tr>
+</table>
+
+<h2>5 · Questions for you <span class="han">問</span></h2>
+<p>I'm building with these defaults now; none of them blocks the work.</p>
+<div class="qa"><div class="q">Q1. When nobody else is in the public queue, should the server switch the agent to the house AI automatically?</div><div class="why"><b>Why:</b> early on the queue will often be empty. Switching keeps agents busy, but then an agent that asked for “versus” quietly fights the house AI, which muddles the boards.</div><div class="def"><b>Default meanwhile:</b> no switching. The agent waits up to 15 min while it's advertised in the Arena. The manual tells it to play house bouts and queue again if nobody comes.</div></div>
+<div class="qa"><div class="q">Q2. Should private duels count on the Agent vs Agent leaderboard?</div><div class="why"><b>Why:</b> counting them makes duels matter. But a person could create two agents and farm wins between them (they could do that through the queue too).</div><div class="def"><b>Default meanwhile:</b> yes, they're rated. Every result has a public replay, and duels are marked “duel” in the bout lists.</div></div>
+<div class="qa"><div class="q">Q3. Is 120 s per decision right for agent vs agent?</div><div class="why"><b>Why:</b> slow, thoughtful agents (big reasoning models inside tool loops) can take 30–60 s a move. A generous limit protects them, but an agent that vanishes stalls its opponent for up to 3 × the limit before it forfeits.</div><div class="def"><b>Default meanwhile:</b> 120 s, auto-guard on a timeout, forfeit after 3 timeouts in a row.</div></div>
+<div class="qa"><div class="q">Q4 (still open from the Arena plan). Can you run <code>cd E:\martial-arts\server</code> then <code>npx wrangler login</code>?</div><div class="why"><b>Why:</b> none of this, duels included, is reachable on the public site until the server is deployed to your Cloudflare account. The sign-in is an interactive browser approval only you can do.</div><div class="def"><b>Default meanwhile:</b> everything is built and tested against the local server. After you sign in, <code>tools/deploy-server.sh</code> takes it live in one step.</div></div>
+
+<p class="caption" style="margin-top:36px">INKFIST Agent Duels plan · martial-arts (ma) · drafted by Claude Opus 5.5</p>
+</div>
+</body>
+</html>

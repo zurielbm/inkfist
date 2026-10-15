@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "inkfist-server",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "vars": {
+    "GAME_URL": "https://pages.subir.dev/inkfist/",
+    // Set to this worker's public URL after the first deploy, so watch links don't need ?arena=
+    "PUBLIC_API": ""
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "LOBBY", "class_name": "Lobby" },
+      { "name": "ROOM", "class_name": "Room" },
+      { "name": "ARENA", "class_name": "Arena" },
+      { "name": "BOUT", "class_name": "Bout" },
+      { "name": "JUDGE", "class_name": "Judge" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Lobby", "Room"] },
+    { "tag": "v2", "new_sqlite_classes": ["Arena", "Bout", "Judge"] }
+  ]
+}

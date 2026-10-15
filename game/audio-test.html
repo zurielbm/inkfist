@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>INKFIST 墨拳 · audio audition (dev)</title>
+    <style>
+      :root {
+        --paper: #e8dcc4;
+        --paper-light: #efe6d2;
+        --ink: #1b1a17;
+        --ink-2: #3a3730;
+        --wash: #8a8578;
+        --crimson: #a3262a;
+        --gold: #b8893a;
+        --jade: #4f7a62;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font: 14px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif;
+      }
+      main { max-width: 1100px; margin: 0 auto; padding: 20px 16px 48px; }
+      h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 0.02em; }
+      h1 span { color: var(--crimson); }
+      h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-2);
+        margin: 22px 0 8px;
+        border-bottom: 1px solid var(--wash);
+        padding-bottom: 4px;
+      }
+      p.note { margin: 0 0 12px; color: var(--ink-2); }
+      #status {
+        font: 12px/1.5 ui-monospace, Consolas, monospace;
+        background: var(--paper-light);
+        border: 1px solid var(--wash);
+        border-radius: 6px;
+        padding: 8px 10px;
+        white-space: pre-wrap;
+      }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+      button {
+        font: inherit;
+        color: var(--ink);
+        background: var(--paper-light);
+        border: 1px solid var(--ink-2);
+        border-radius: 6px;
+        padding: 8px 10px;
+        cursor: pointer;
+        text-align: left;
+        min-height: 40px;
+      }
+      button:hover { background: #fff8e8; }
+      button:active { transform: translateY(1px); }
+      button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+      button.primary { background: var(--ink); color: var(--paper-light); }
+      button.on { background: var(--crimson); color: var(--paper-light); border-color: var(--crimson); }
+      button small { display: block; color: var(--wash); font-size: 11px; line-height: 1.25; margin-top: 2px; }
+      button.primary small, button.on small { color: #d8ccb2; }
+      .controls { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px 18px; }
+      label.slider { display: grid; grid-template-columns: 82px 1fr 44px; align-items: center; gap: 8px; }
+      label.slider output { font: 12px ui-monospace, Consolas, monospace; text-align: right; }
+      input[type='range'] { width: 100%; accent-color: var(--crimson); }
+      label.check { display: flex; gap: 6px; align-items: center; }
+      .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    </style>
+  </head>
+  <body>
+    <main id="app">
+      <h1>INKFIST <span>墨拳</span> · procedural audio audition</h1>
+      <p class="note">Dev-only page. Every sound is synthesised at runtime (no audio files). The first click unlocks audio.</p>
+    </main>
+    <script type="module" src="./src/audio/test-page.ts"></script>
+  </body>
+</html>

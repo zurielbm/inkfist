@@ -1,0 +1,874 @@
+{
+ "id": "seolhwa",
+ "clips": {
+  "idle": {
+   "length": 72,
+   "loop": true,
+   "events": {}
+  },
+  "walk_f": {
+   "length": 26,
+   "loop": true,
+   "events": {}
+  },
+  "walk_b": {
+   "length": 30,
+   "loop": true,
+   "events": {}
+  },
+  "jump": {
+   "length": 14,
+   "loop": false,
+   "events": {}
+  },
+  "fall": {
+   "length": 16,
+   "loop": false,
+   "events": {}
+  },
+  "land": {
+   "length": 10,
+   "loop": false,
+   "events": {}
+  },
+  "jump2": {
+   "length": 24,
+   "loop": false,
+   "events": {}
+  },
+  "dash_f": {
+   "length": 18,
+   "loop": false,
+   "events": {}
+  },
+  "dash_b": {
+   "length": 18,
+   "loop": false,
+   "events": {}
+  },
+  "airdash": {
+   "length": 14,
+   "loop": false,
+   "events": {}
+  },
+  "guard": {
+   "length": 4,
+   "loop": false,
+   "events": {}
+  },
+  "guard_hit": {
+   "length": 10,
+   "loop": false,
+   "events": {}
+  },
+  "deflect": {
+   "length": 16,
+   "loop": false,
+   "events": {
+    "hit": 3
+   }
+  },
+  "hit_s": {
+   "length": 18,
+   "loop": false,
+   "events": {}
+  },
+  "hit_h": {
+   "length": 24,
+   "loop": false,
+   "events": {}
+  },
+  "hit_air": {
+   "length": 12,
+   "loop": false,
+   "events": {}
+  },
+  "launch": {
+   "length": 14,
+   "loop": false,
+   "events": {}
+  },
+  "knockdown": {
+   "length": 22,
+   "loop": false,
+   "events": {}
+  },
+  "down": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "getup": {
+   "length": 24,
+   "loop": false,
+   "events": {}
+  },
+  "wall": {
+   "length": 20,
+   "loop": false,
+   "events": {}
+  },
+  "stagger": {
+   "length": 30,
+   "loop": false,
+   "events": {}
+  },
+  "crumple": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "burst": {
+   "length": 20,
+   "loop": false,
+   "events": {
+    "hit": 4
+   }
+  },
+  "focus_charge": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "s1": {
+   "length": 22,
+   "loop": false,
+   "events": {
+    "hit": 7
+   }
+  },
+  "s2": {
+   "length": 25,
+   "loop": false,
+   "events": {
+    "hit": 8
+   }
+  },
+  "s3": {
+   "length": 32,
+   "loop": false,
+   "events": {
+    "hit": 10
+   }
+  },
+  "s_f": {
+   "length": 36,
+   "loop": false,
+   "events": {
+    "hit": 12
+   }
+  },
+  "s_u": {
+   "length": 35,
+   "loop": false,
+   "events": {
+    "hit": 9
+   }
+  },
+  "s_d": {
+   "length": 34,
+   "loop": false,
+   "events": {
+    "hit": 10
+   }
+  },
+  "s_air": {
+   "length": 24,
+   "loop": false,
+   "events": {
+    "hit": 7
+   }
+  },
+  "h": {
+   "length": 42,
+   "loop": false,
+   "events": {
+    "hit": 15
+   }
+  },
+  "h_f": {
+   "length": 40,
+   "loop": false,
+   "events": {
+    "hit": 14
+   }
+  },
+  "h_d": {
+   "length": 40,
+   "loop": false,
+   "events": {
+    "hit": 13
+   }
+  },
+  "h_air": {
+   "length": 32,
+   "loop": false,
+   "events": {
+    "hit": 10
+   }
+  },
+  "h_air_d": {
+   "length": 20,
+   "loop": false,
+   "events": {
+    "hit": 10
+   }
+  },
+  "focus_release": {
+   "length": 38,
+   "loop": false,
+   "events": {
+    "hit": 7
+   }
+  },
+  "art_n": {
+   "length": 40,
+   "loop": false,
+   "events": {
+    "hit": 13
+   }
+  },
+  "art_f": {
+   "length": 40,
+   "loop": false,
+   "events": {
+    "hit": 12
+   }
+  },
+  "art_d": {
+   "length": 50,
+   "loop": false,
+   "events": {
+    "hit": 18
+   }
+  },
+  "secret": {
+   "length": 150,
+   "loop": false,
+   "events": {
+    "hit": 10,
+    "finish": 120
+   }
+  },
+  "intro": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "win": {
+   "length": 64,
+   "loop": false,
+   "events": {}
+  }
+ },
+ "chains": [
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.2,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "follow": "thigh_L",
+   "follow_amount": 0.55,
+   "bones": [
+    "cloth_fl_1",
+    "cloth_fl_2",
+    "cloth_fl_3"
+   ],
+   "name": "cloth_fl",
+   "points": [
+    [
+     0.1111,
+     0.9589,
+     0.1187
+    ],
+    [
+     0.132,
+     0.7326,
+     0.137
+    ],
+    [
+     0.1528,
+     0.5062,
+     0.1554
+    ],
+    [
+     0.1737,
+     0.2799,
+     0.1737
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.2,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "bones": [
+    "cloth_bl_1",
+    "cloth_bl_2",
+    "cloth_bl_3"
+   ],
+   "name": "cloth_bl",
+   "points": [
+    [
+     0.1208,
+     0.9589,
+     -0.0684
+    ],
+    [
+     0.1434,
+     0.7326,
+     -0.0851
+    ],
+    [
+     0.166,
+     0.5062,
+     -0.1018
+    ],
+    [
+     0.1887,
+     0.2799,
+     -0.1186
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.2,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "bones": [
+    "cloth_br_1",
+    "cloth_br_2",
+    "cloth_br_3"
+   ],
+   "name": "cloth_br",
+   "points": [
+    [
+     -0.1208,
+     0.9589,
+     -0.0684
+    ],
+    [
+     -0.1434,
+     0.7326,
+     -0.0851
+    ],
+    [
+     -0.166,
+     0.5062,
+     -0.1018
+    ],
+    [
+     -0.1887,
+     0.2799,
+     -0.1186
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.2,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "follow": "thigh_R",
+   "follow_amount": 0.55,
+   "bones": [
+    "cloth_fr_1",
+    "cloth_fr_2",
+    "cloth_fr_3"
+   ],
+   "name": "cloth_fr",
+   "points": [
+    [
+     -0.1111,
+     0.9589,
+     0.1187
+    ],
+    [
+     -0.132,
+     0.7326,
+     0.137
+    ],
+    [
+     -0.1528,
+     0.5062,
+     0.1554
+    ],
+    [
+     -0.1737,
+     0.2799,
+     0.1737
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.26,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "follow": "thigh_L",
+   "follow_amount": 0.75,
+   "bones": [
+    "skirt_fl_1",
+    "skirt_fl_2",
+    "skirt_fl_3"
+   ],
+   "name": "skirt_fl",
+   "points": [
+    [
+     0.099,
+     0.9589,
+     0.105
+    ],
+    [
+     0.1155,
+     0.6726,
+     0.119
+    ],
+    [
+     0.132,
+     0.3863,
+     0.1331
+    ],
+    [
+     0.1485,
+     0.1,
+     0.1471
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.26,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "bones": [
+    "skirt_bl_1",
+    "skirt_bl_2",
+    "skirt_bl_3"
+   ],
+   "name": "skirt_bl",
+   "points": [
+    [
+     0.099,
+     0.9589,
+     -0.0633
+    ],
+    [
+     0.1155,
+     0.6726,
+     -0.0773
+    ],
+    [
+     0.132,
+     0.3863,
+     -0.0913
+    ],
+    [
+     0.1485,
+     0.1,
+     -0.1054
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.26,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "bones": [
+    "skirt_br_1",
+    "skirt_br_2",
+    "skirt_br_3"
+   ],
+   "name": "skirt_br",
+   "points": [
+    [
+     -0.099,
+     0.9589,
+     -0.0633
+    ],
+    [
+     -0.1155,
+     0.6726,
+     -0.0773
+    ],
+    [
+     -0.132,
+     0.3863,
+     -0.0913
+    ],
+    [
+     -0.1485,
+     0.1,
+     -0.1054
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.26,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.9,
+   "follow": "thigh_R",
+   "follow_amount": 0.75,
+   "bones": [
+    "skirt_fr_1",
+    "skirt_fr_2",
+    "skirt_fr_3"
+   ],
+   "name": "skirt_fr",
+   "points": [
+    [
+     -0.099,
+     0.9589,
+     0.105
+    ],
+    [
+     -0.1155,
+     0.6726,
+     0.119
+    ],
+    [
+     -0.132,
+     0.3863,
+     0.1331
+    ],
+    [
+     -0.1485,
+     0.1,
+     0.1471
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "forearm_L",
+   "stiffness": 0.12,
+   "damping": 0.84,
+   "gravity": 0.6,
+   "drag": 1.1,
+   "bones": [
+    "sleeve_L_1",
+    "sleeve_L_2",
+    "sleeve_L_3"
+   ],
+   "name": "sleeve_L",
+   "points": [
+    [
+     0.2259,
+     1.0825,
+     -0.0295
+    ],
+    [
+     0.2304,
+     0.9755,
+     -0.0272
+    ],
+    [
+     0.228,
+     0.8671,
+     -0.0284
+    ],
+    [
+     0.2217,
+     0.7562,
+     -0.0316
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "forearm_R",
+   "stiffness": 0.12,
+   "damping": 0.84,
+   "gravity": 0.6,
+   "drag": 1.1,
+   "bones": [
+    "sleeve_R_1",
+    "sleeve_R_2",
+    "sleeve_R_3"
+   ],
+   "name": "sleeve_R",
+   "points": [
+    [
+     -0.2262,
+     1.0827,
+     -0.0295
+    ],
+    [
+     -0.2305,
+     0.9757,
+     -0.0273
+    ],
+    [
+     -0.228,
+     0.8673,
+     -0.0286
+    ],
+    [
+     -0.2215,
+     0.7563,
+     -0.0319
+    ]
+   ]
+  },
+  {
+   "kind": "hair",
+   "parent": "head",
+   "stiffness": 0.26,
+   "damping": 0.82,
+   "gravity": 0.45,
+   "drag": 0.7,
+   "margin": 0.03,
+   "bones": [
+    "hair_l_1",
+    "hair_l_2",
+    "hair_l_3",
+    "hair_l_4"
+   ],
+   "name": "hair_l",
+   "points": [
+    [
+     0.042,
+     1.4762,
+     -0.0642
+    ],
+    [
+     0.0508,
+     1.2812,
+     -0.1295
+    ],
+    [
+     0.0595,
+     1.0862,
+     -0.0971
+    ],
+    [
+     0.0683,
+     0.8912,
+     -0.1791
+    ],
+    [
+     0.077,
+     0.6962,
+     -0.1286
+    ]
+   ]
+  },
+  {
+   "kind": "hair",
+   "parent": "head",
+   "stiffness": 0.26,
+   "damping": 0.82,
+   "gravity": 0.45,
+   "drag": 0.7,
+   "margin": 0.03,
+   "bones": [
+    "hair_c_1",
+    "hair_c_2",
+    "hair_c_3",
+    "hair_c_4"
+   ],
+   "name": "hair_c",
+   "points": [
+    [
+     0.0,
+     1.4762,
+     -0.0663
+    ],
+    [
+     0.0,
+     1.2812,
+     -0.1264
+    ],
+    [
+     0.0,
+     1.0862,
+     -0.0977
+    ],
+    [
+     0.0,
+     0.8912,
+     -0.1793
+    ],
+    [
+     0.0,
+     0.6962,
+     -0.1181
+    ]
+   ]
+  },
+  {
+   "kind": "hair",
+   "parent": "head",
+   "stiffness": 0.26,
+   "damping": 0.82,
+   "gravity": 0.45,
+   "drag": 0.7,
+   "margin": 0.03,
+   "bones": [
+    "hair_r_1",
+    "hair_r_2",
+    "hair_r_3",
+    "hair_r_4"
+   ],
+   "name": "hair_r",
+   "points": [
+    [
+     -0.042,
+     1.4762,
+     -0.0663
+    ],
+    [
+     -0.0508,
+     1.2812,
+     -0.1281
+    ],
+    [
+     -0.0595,
+     1.0862,
+     -0.0977
+    ],
+    [
+     -0.0683,
+     0.8912,
+     -0.1793
+    ],
+    [
+     -0.077,
+     0.6962,
+     -0.129
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.1,
+   "damping": 0.86,
+   "gravity": 0.8,
+   "drag": 1.0,
+   "bones": [
+    "norigae_1",
+    "norigae_2",
+    "norigae_3"
+   ],
+   "name": "norigae",
+   "points": [
+    [
+     0.085,
+     0.9539,
+     0.1359
+    ],
+    [
+     0.0863,
+     0.8747,
+     0.1378
+    ],
+    [
+     0.0876,
+     0.7955,
+     0.1398
+    ],
+    [
+     0.089,
+     0.7139,
+     0.1419
+    ]
+   ]
+  }
+ ],
+ "height": 1.64,
+ "colliders": [
+  {
+   "bone": "hips",
+   "to": "spine",
+   "radius": 0.0998,
+   "length": 0.1413
+  },
+  {
+   "bone": "spine",
+   "to": "chest",
+   "radius": 0.1154,
+   "length": 0.1585
+  },
+  {
+   "bone": "chest",
+   "to": "neck",
+   "radius": 0.1047,
+   "length": 0.2016
+  },
+  {
+   "bone": "head",
+   "to": null,
+   "radius": 0.0787,
+   "length": 0.1438
+  },
+  {
+   "bone": "thigh_L",
+   "to": "shin_L",
+   "radius": 0.067,
+   "length": 0.3442
+  },
+  {
+   "bone": "shin_L",
+   "to": "foot_L",
+   "radius": 0.0379,
+   "length": 0.4041
+  },
+  {
+   "bone": "thigh_R",
+   "to": "shin_R",
+   "radius": 0.0672,
+   "length": 0.3432
+  },
+  {
+   "bone": "shin_R",
+   "to": "foot_R",
+   "radius": 0.0381,
+   "length": 0.4048
+  },
+  {
+   "bone": "upper_arm_L",
+   "to": "forearm_L",
+   "radius": 0.034,
+   "length": 0.262
+  },
+  {
+   "bone": "forearm_L",
+   "to": "hand_L",
+   "radius": 0.0314,
+   "length": 0.2478
+  },
+  {
+   "bone": "upper_arm_R",
+   "to": "forearm_R",
+   "radius": 0.0339,
+   "length": 0.263
+  },
+  {
+   "bone": "forearm_R",
+   "to": "hand_R",
+   "radius": 0.0314,
+   "length": 0.2479
+  }
+ ]
+}

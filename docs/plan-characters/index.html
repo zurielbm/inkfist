@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan(ma): INKFIST character art overhaul — AAA rebuild</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 76 76'%3E%3Crect width='76' height='76' rx='16' fill='%23e8dcc4'/%3E%3Cpath fill='%231a1a1a' d='M20,17L43.25,17L56,29.75L56,59L20,59ZM24,21L24,55L52,55L52,34L39,34L39,21ZM43,22.25L43,30L50.75,30ZM30,48L34,48L34,39.5L37,42.5L37,37.75L32,32.75L27,38.25L27,42.5L30,39.5ZM38,49L38,53L26,53L26,49Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Serif+KR:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#e8dcc4;--paper2:#efe6d2;--paper3:#ddd0b4;--ink:#1b1a17;--ink2:#3a3730;--wash:#8a8578;--crimson:#a3262a;--gold:#b8893a;--jade:#4f7a62;--steel:#5d6a73;--lav:#a99bbd;--saffron:#c77b2b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding:40px 28px 80px}
+h1,h2,h3{font-family:"Noto Serif KR",serif;margin:0}
+h1{font-size:42px;font-weight:900;line-height:1.1}
+h2{font-size:27px;font-weight:900;margin:56px 0 14px;display:flex;align-items:baseline;gap:12px}
+h2 .han{color:var(--crimson);font-size:21px}
+h3{font-size:18px;font-weight:700;margin:16px 0 6px}
+p{margin:8px 0}
+.lead{font-size:18px;color:var(--ink2);max-width:880px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border:1.5px solid var(--ink);border-radius:999px;margin-right:6px}
+.tag.red{border-color:var(--crimson);color:var(--crimson)}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--paper2);border:1.5px solid rgba(27,26,23,.18);border-radius:14px;padding:16px 18px;box-shadow:0 6px 18px rgba(60,45,20,.08)}
+.card h3{margin-top:0}
+.card.ink{background:#262420;color:#efe6d2;border-color:#262420}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 9px;border-bottom:1px solid rgba(27,26,23,.15);text-align:left;vertical-align:top}
+th{font-family:"Noto Serif KR";font-weight:900;background:rgba(27,26,23,.05)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:13px;background:rgba(27,26,23,.07);padding:1px 5px;border-radius:5px}
+.shot{border-radius:12px;border:1.5px solid rgba(27,26,23,.25);width:100%;display:block;background:#d8cdb6}
+.caption{font-size:13px;color:var(--ink2);margin-top:6px}
+.note{background:rgba(163,38,42,.07);border:1px solid rgba(163,38,42,.3);border-radius:10px;padding:10px 14px;font-size:14px}
+.good{color:var(--jade);font-weight:800}.bad{color:var(--crimson);font-weight:800}
+.qa{border-left:4px solid var(--crimson);padding:4px 0 4px 16px;margin:18px 0}
+.qa .q{font-weight:800;font-family:"Noto Serif KR";font-size:17px}
+.qa .why{font-size:14px;color:var(--ink2);margin-top:4px}
+.qa .def{font-size:14px;margin-top:4px}
+.qa .def b{color:var(--jade)}
+.milestone{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(27,26,23,.25)}
+.milestone .n{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Noto Serif KR";font-weight:900}
+.sw{display:inline-block;width:18px;height:18px;border-radius:4px;border:1px solid rgba(0,0,0,.3);vertical-align:-4px;margin-right:4px}
+.charhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.charhead .han{font-family:"Noto Serif KR";font-weight:900;font-size:30px;color:var(--crimson)}
+ul.tight{margin:6px 0;padding-left:20px}ul.tight li{margin:3px 0}
+.layers{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.layers div{border-radius:6px;padding:4px 10px;font-size:13px;font-weight:600;color:#f4ecdb}
+.big{font-family:"Noto Serif KR";font-weight:900;font-size:30px;line-height:1}
+.stat{font-size:12px;color:var(--wash);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+svg text{font-family:Inter,sans-serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+<span class="tag red">Plan</span><span class="tag">Character art</span><span class="tag">Blender 5.2 → glTF → Three.js</span>
+<h1 style="margin-top:14px">INKFIST 墨拳 — Character art overhaul</h1>
+<p class="lead">This plan rebuilds Mu-jin, Seol-hwa and Hyeon-gong from scratch to the standard of a stylized AAA fighting game. It covers clean quad topology, real anatomy, articulated hands, expressive faces, designed hair and layered costumes, painted textures, and a proper anime/ink shading pipeline in the game. The engine contract stays the same: shared skeleton names, all 44 clips, spring chains and file paths. Gameplay and netcode are untouched.</p>
+
+<h2>1 · Audit of the current models <span class="han">診斷</span></h2>
+<div class="grid g3">
+  <div><img class="shot" src="img/mujin_model.png" alt="Mu-jin current model"><div class="caption">Mu-jin today: tubes, ellipsoids and cone hair</div></div>
+  <div><img class="shot" src="img/seolhwa_model.png" alt="Seol-hwa current model"><div class="caption">Seol-hwa today: cylinder robe shells</div></div>
+  <div><img class="shot" src="img/hyeongong_model.png" alt="Hyeon-gong current model"><div class="caption">Hyeon-gong today: mannequin limbs</div></div>
+</div>
+<div class="grid g2" style="margin-top:16px">
+  <div class="grid g2"><img class="shot" src="img/mujin_face.png" alt="Mu-jin face"><img class="shot" src="img/seolhwa_face.png" alt="Seol-hwa face"></div>
+  <div class="card">
+    <h3>What's actually wrong</h3>
+    <table>
+      <tr><th>Area</th><th>Now</th><th>AAA bar</th></tr>
+      <tr><td>Topology</td><td class="bad">Separate overlapping primitives, no edge flow</td><td>One continuous quad body, with loops at every joint</td></tr>
+      <tr><td>Hands</td><td class="bad">Ellipsoid "mittens"</td><td>Five fingers, 15 bones per hand, pose library</td></tr>
+      <tr><td>Face</td><td class="bad">Decals on an egg. No lids, mouth or jaw</td><td>Eye/mouth loops, eyeballs, lash line, expressions</td></tr>
+      <tr><td>Hair</td><td class="bad">Random cone spikes</td><td>Designed clumps with flow, layering and a highlight band</td></tr>
+      <tr><td>Cloth</td><td class="bad">Uniform cylinders</td><td>Pattern-cut layers, cross collar, hems, folds</td></tr>
+      <tr><td>Surfacing</td><td class="bad">10–13 flat colours, no UVs</td><td>UV atlas, painted albedo and an ink-control map</td></tr>
+      <tr><td>Skinning</td><td class="bad">Distance falloff, wrists candy-wrap</td><td>Heat weights, smoothing, twist bones</td></tr>
+      <tr><td>Outline</td><td class="bad">Cracks at hard edges, same width everywhere</td><td>Smoothed outline normals, painted width</td></tr>
+      <tr><td>Draw calls</td><td class="bad">~22–26 per fighter (with outlines)</td><td>≈6 per fighter</td></tr>
+    </table>
+  </div>
+</div>
+
+<h2>2 · Foundation: production topology <span class="han">骨肉</span></h2>
+<div class="grid g2">
+  <div><img class="shot" src="img/hbm_bodies.png" alt="CC0 base bodies"><div class="caption">Blender Studio <b>Human Base Meshes</b> v1.4.1 (CC0). The realistic male and female (left) share one topology, so their shapes can be blended. The stylized pair (right) is too cartoonish for the <i>Gosu</i> look.</div></div>
+  <div><img class="shot" src="img/hbm_head_base.png" alt="Head topology"><div class="caption">Base-level head topology: concentric eye and mouth loops, nasolabial flow and a modelled ear. This is what blink and shout morphs need.</div></div>
+</div>
+<div class="grid g3" style="margin-top:16px">
+  <div class="card"><h3>Body pipeline</h3><ul class="tight">
+    <li>Bake the sculpt into the cage with <code>Apply Base</code>, giving ~10.5k quads with the sculpted anatomy.</li>
+    <li>Reshape each character with blended targets plus regional sculpt deformers (bulk, age, taper).</li>
+    <li><b>Fit to the game skeleton</b>: weight the mesh to a skeleton at its native joints, then pose those joints onto INKFIST's joints and apply. Proportions match the existing animations exactly.</li>
+    <li>Delete skin hidden under clothing. This prevents poke-through and saves triangles.</li></ul></div>
+  <div class="card"><h3>Skeleton (extended, still compatible)</h3><ul class="tight">
+    <li>The 20 shared bones keep their names, so all 44 clips and the sim keep working.</li>
+    <li><b>+30 finger bones</b> (thumb and four fingers × 3 joints × 2 hands).</li>
+    <li><b>+4 twist bones</b> (upper arm and forearm), driven at bake time. No more candy-wrap wrists.</li>
+    <li><b>+jaw</b>, and spring chains for hair, cloth, scarf, sleeves and beads, as today.</li></ul></div>
+  <div class="card"><h3>Weights</h3><ul class="tight">
+    <li>Bone-heat auto weights on the body, then smoothing, limited to 4 influences and normalized.</li>
+    <li>Garments get their weights by data transfer from the body (nearest-face interpolation). Skirts and robes blend into chain bones.</li>
+    <li>Stress-test poses (deep crouch, high kick, arms overhead, full twist) are rendered every build.</li></ul></div>
+</div>
+
+<svg viewBox="0 0 1060 250" style="width:100%;margin-top:16px;background:var(--paper2);border-radius:14px;border:1.5px solid rgba(27,26,23,.18)">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1b1a17"/></marker></defs>
+  <g font-size="13" font-weight="700">
+    <rect x="16" y="30" width="150" height="70" rx="10" fill="#efe6d2" stroke="#1b1a17"/><text x="91" y="58" text-anchor="middle">CC0 base body</text><text x="91" y="78" text-anchor="middle" font-weight="400" font-size="11">10.5k quads + sculpt</text>
+    <rect x="196" y="30" width="150" height="70" rx="10" fill="#efe6d2" stroke="#1b1a17"/><text x="271" y="58" text-anchor="middle">Shape + fit</text><text x="271" y="78" text-anchor="middle" font-weight="400" font-size="11">blend, sculpt, re-rest</text>
+    <rect x="376" y="30" width="150" height="70" rx="10" fill="#efe6d2" stroke="#1b1a17"/><text x="451" y="58" text-anchor="middle">Face · hands</text><text x="451" y="78" text-anchor="middle" font-weight="400" font-size="11">eyes, lashes, morphs, fingers</text>
+    <rect x="556" y="30" width="150" height="70" rx="10" fill="#efe6d2" stroke="#1b1a17"/><text x="631" y="58" text-anchor="middle">Costume · hair</text><text x="631" y="78" text-anchor="middle" font-weight="400" font-size="11">pattern cuts, folds, clumps</text>
+    <rect x="736" y="30" width="150" height="70" rx="10" fill="#efe6d2" stroke="#1b1a17"/><text x="811" y="58" text-anchor="middle">UV + paint bake</text><text x="811" y="78" text-anchor="middle" font-weight="400" font-size="11">albedo + ink map</text>
+    <rect x="916" y="30" width="128" height="70" rx="10" fill="#262420" stroke="#1b1a17"/><text x="980" y="58" text-anchor="middle" fill="#efe6d2">glTF</text><text x="980" y="78" text-anchor="middle" font-weight="400" font-size="11" fill="#efe6d2">meshopt + webp</text>
+    <path d="M166,65H192M346,65H372M526,65H552M706,65H732M886,65H912" stroke="#1b1a17" stroke-width="2" marker-end="url(#ar)"/>
+    <rect x="196" y="150" width="150" height="70" rx="10" fill="#efe6d2" stroke="#4f7a62"/><text x="271" y="178" text-anchor="middle">Skin weights</text><text x="271" y="198" text-anchor="middle" font-weight="400" font-size="11">heat → transfer → smooth</text>
+    <rect x="556" y="150" width="150" height="70" rx="10" fill="#efe6d2" stroke="#4f7a62"/><text x="631" y="178" text-anchor="middle">Ink prep</text><text x="631" y="198" text-anchor="middle" font-weight="400" font-size="11">proxy normals, outline attrs</text>
+    <rect x="736" y="150" width="150" height="70" rx="10" fill="#efe6d2" stroke="#4f7a62"/><text x="811" y="178" text-anchor="middle">Bake clips</text><text x="811" y="198" text-anchor="middle" font-weight="400" font-size="11">44 clips + fingers + face</text>
+    <path d="M271,100V146M631,100V146M811,100V146M886,185H980V104" stroke="#4f7a62" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  </g>
+  <text x="16" y="242" font-size="12" fill="#3a3730">Everything stays a deterministic Python build in blender/: one command per character regenerates the model, textures, clips and metadata.</text>
+</svg>
+
+<h2>3 · Character redesigns <span class="han">人物</span></h2>
+<p class="lead" style="font-size:16px">Each fighter keeps their identity, colours and moves, but gets a real costume with period-plausible murim construction. Every garment has a reason to exist, and each silhouette reads in black at 120 px tall.</p>
+<div class="grid g3">
+  <div class="card">
+    <div class="charhead"><span class="han">無盡</span><h3 style="margin:0">Mu-jin 무진</h3></div>
+    <div class="stat">The Wild Fist · 1.80 m · lean, athletic, ~20</div>
+    <ul class="tight">
+      <li><b>Silhouette:</b> a huge wild mane, swept back and tied low with a red cord; a long torn crimson scarf with two tails; a coat flaring into split panels.</li>
+      <li><b>Costume:</b> a steel-blue travel coat with a <i>jiaoling</i> cross collar (right over left), sleeves bound at the forearm with cord, an off-white inner shirt, a black sash with a hanging knot and a coin pouch, dark trousers bloused into wrapped leggings, and cloth shoes.</li>
+      <li><b>Hands:</b> bandaged knuckles and wrists. Fists by default, open palm for Tiger Palm.</li>
+      <li><b>Face:</b> sharp jaw, narrow fierce eyes, a scar on the left cheek, a cocky smirk morph.</li>
+    </ul>
+    <div class="layers"><div style="background:#5d6a73">Coat · steel</div><div style="background:#a3262a">Scarf · crimson</div><div style="background:#2d2c29">Trousers / sash · ink</div><div style="background:#a59c8a">Wraps · undyed linen</div></div>
+  </div>
+  <div class="card">
+    <div class="charhead"><span class="han">雪花</span><h3 style="margin:0">Seol-hwa 설화</h3></div>
+    <div class="stat">The Crimson Sleeve · 1.68 m · slender dancer</div>
+    <ul class="tight">
+      <li><b>Silhouette:</b> very long hair falling to the thigh; half-up bun with a gold plum-blossom pin; enormous <b>water sleeves</b> (水袖) that trail past the hands. They are the weapon.</li>
+      <li><b>Costume:</b> an open crimson outer robe (褙子) with gold borders and plum-blossom embroidery, a lavender silk inner dress with pleated skirt, a dark waist sash with a <b>norigae</b> (jade and tassel), and red-brown boots with gold tooling.</li>
+      <li><b>Hands:</b> elegant open hands, sword-finger (剑指) for casts.</li>
+      <li><b>Face:</b> calm almond eyes, red lip tint, a petal mark on the forehead.</li>
+    </ul>
+    <div class="layers"><div style="background:#a3262a">Outer robe · crimson</div><div style="background:#b8893a">Trim · old gold</div><div style="background:#8f80a8">Dress · lavender</div><div style="background:#2b2228">Sash · plum-black</div></div>
+  </div>
+  <div class="card">
+    <div class="charhead"><span class="han">玄功</span><h3 style="margin:0">Hyeon-gong 현공</h3></div>
+    <div class="stat">The Iron Monk · 1.86 m · massive, ~55</div>
+    <ul class="tight">
+      <li><b>Silhouette:</b> a barrel chest and wide stance; a bald head with ordination marks; long white brows and beard; giant prayer beads.</li>
+      <li><b>Costume:</b> a dark crimson under-robe; a saffron <b>kasaya</b> in a patchwork grid over the left shoulder (right shoulder and arm bare, showing muscle); a thick belt; iron bracers; wrapped gaiters; straw sandals.</li>
+      <li><b>Hands:</b> huge, with broad palms. Open palm for Tathāgata Palm, claw for grabs.</li>
+      <li><b>Face:</b> deep brow ridge, age lines, a serene/wrath morph pair.</li>
+    </ul>
+    <div class="layers"><div style="background:#c77b2b">Kasaya · saffron</div><div style="background:#6e1f22">Under-robe · deep crimson</div><div style="background:#3b2a20">Beads · rosewood</div><div style="background:#4a4f55">Bracers · iron</div></div>
+  </div>
+</div>
+
+<h2>4 · Face, hands & expressions <span class="han">表情</span></h2>
+<div class="grid g2">
+  <div class="card">
+    <h3>Face rig (morph targets)</h3>
+    <svg viewBox="0 0 520 150" style="width:100%">
+      <g font-size="12" text-anchor="middle" font-weight="600">
+        <g transform="translate(55,62)"><ellipse rx="34" ry="44" fill="#ecdcc0" stroke="#1b1a17" stroke-width="2"/><path d="M-20,-6q8,-6 15,0M5,-6q8,-6 15,0" stroke="#1b1a17" stroke-width="3" fill="none"/><path d="M-8,22h16" stroke="#1b1a17" stroke-width="2"/><text y="68">neutral</text></g>
+        <g transform="translate(160,62)"><ellipse rx="34" ry="44" fill="#ecdcc0" stroke="#1b1a17" stroke-width="2"/><path d="M-21,-4h14M6,-4h14" stroke="#1b1a17" stroke-width="3"/><path d="M-8,22h16" stroke="#1b1a17" stroke-width="2"/><text y="68">blink</text></g>
+        <g transform="translate(265,62)"><ellipse rx="34" ry="44" fill="#ecdcc0" stroke="#1b1a17" stroke-width="2"/><path d="M-22,-14l14,6M22,-14l-14,6" stroke="#1b1a17" stroke-width="3"/><path d="M-20,-2q8,-4 13,0M7,-2q8,-4 13,0" stroke="#1b1a17" stroke-width="3" fill="none"/><path d="M-9,24q9,-5 18,0" stroke="#1b1a17" stroke-width="2" fill="none"/><text y="68">glare</text></g>
+        <g transform="translate(370,62)"><ellipse rx="34" ry="44" fill="#ecdcc0" stroke="#1b1a17" stroke-width="2"/><path d="M-22,-8l14,-4M22,-8l-14,-4" stroke="#1b1a17" stroke-width="3"/><path d="M-20,-1h13M7,-1h13" stroke="#1b1a17" stroke-width="3"/><path d="M-10,20q10,-8 20,0q-10,4 -20,0" fill="#1b1a17"/><text y="68">pain</text></g>
+        <g transform="translate(475,62)"><ellipse rx="34" ry="44" fill="#ecdcc0" stroke="#1b1a17" stroke-width="2"/><path d="M-22,-14l14,6M22,-14l-14,6" stroke="#1b1a17" stroke-width="3"/><ellipse cy="22" rx="11" ry="9" fill="#5c171b" stroke="#1b1a17" stroke-width="2"/><text y="68">kiai shout</text></g>
+      </g>
+    </svg>
+    <p style="font-size:14px">Morphs live on a separate head primitive, so only ~3.5k vertices carry morph data. The game drives them from the fighter's state: blinks on a timer, a shout on attack startup, pain on hitstun, a glare in guard and focus, and a smirk in intros and wins. Eyes are real eyeballs with a painted iris, plus a geometric lash line. That lash line is the strongest single cue of the manhwa look.</p>
+  </div>
+  <div class="card">
+    <h3>Hand pose library</h3>
+    <svg viewBox="0 0 520 150" style="width:100%">
+      <g font-size="12" text-anchor="middle" font-weight="600" fill="#ecdcc0" stroke="#1b1a17" stroke-width="2">
+        <g transform="translate(55,55)"><rect x="-22" y="-20" width="44" height="40" rx="12"/><path d="M-22,-6h44M-22,6h44" fill="none"/><text y="80" fill="#1b1a17" stroke="none">fist 拳</text></g>
+        <g transform="translate(160,55)"><rect x="-18" y="-4" width="36" height="34" rx="8"/><rect x="-18" y="-40" width="8" height="38" rx="4"/><rect x="-8" y="-46" width="8" height="44" rx="4"/><rect x="2" y="-42" width="8" height="40" rx="4"/><rect x="11" y="-34" width="7" height="32" rx="3.5"/><rect x="-30" y="0" width="14" height="8" rx="4" transform="rotate(-35 -23 4)"/><text y="80" fill="#1b1a17" stroke="none">palm 掌</text></g>
+        <g transform="translate(265,55)"><rect x="-18" y="-4" width="36" height="34" rx="8"/><rect x="-18" y="-40" width="8" height="38" rx="4"/><rect x="-8" y="-46" width="8" height="44" rx="4"/><rect x="2" y="-12" width="16" height="10" rx="5"/><text y="80" fill="#1b1a17" stroke="none">sword-finger 剑指</text></g>
+        <g transform="translate(370,55)"><rect x="-18" y="-4" width="36" height="34" rx="8"/><path d="M-14,-4q-6,-22 4,-30M-4,-4q-4,-26 6,-32M6,-4q0,-24 9,-28M15,-2q4,-18 10,-22" fill="none" stroke-width="7" stroke-linecap="round"/><text y="80" fill="#1b1a17" stroke="none">claw 爪</text></g>
+        <g transform="translate(475,55)"><rect x="-18" y="-4" width="36" height="34" rx="8"/><path d="M-14,-4q-4,-18 4,-26M-4,-4q-2,-22 6,-28M6,-4q2,-18 8,-24M15,-2q3,-14 8,-18" fill="none" stroke-width="7" stroke-linecap="round"/><text y="80" fill="#1b1a17" stroke="none">relaxed</text></g>
+      </g>
+    </svg>
+    <p style="font-size:14px">Each animation key can now say <code>grip_L: 'palm'</code>. Defaults come from the clip type: strikes use fist, palms use palm, guard uses a half fist, and Seol-hwa's casts use sword-finger. These are blended during interpolation, and finger bones are keyed in the same bake.</p>
+  </div>
+</div>
+
+<h2>5 · Surfacing & in-game ink shading <span class="han">墨法</span></h2>
+<div class="grid g2">
+  <div class="card">
+    <h3>Textures per fighter</h3>
+    <table>
+      <tr><th>Map</th><th>Content</th><th>Size</th></tr>
+      <tr><td>Albedo (sRGB)</td><td>Hand-painted ink-wash colour: pigment pooling at the hems, embroidery (plum blossoms, cloud scrolls), kasaya patch grid, stitching, bandage weave, skin blush</td><td>2048² webp</td></tr>
+      <tr><td>Ink map (linear)</td><td>R = shadow bias (baked AO, painted occlusion under collars and folds) · G = sheen mask (hair band, silk, iron) · B = <b>inner lines</b> (folds, seams, muscle lines drawn as brush strokes)</td><td>1024² webp</td></tr>
+      <tr><td>Eyes</td><td>Iris and pupil with a catch-light</td><td>in the atlas</td></tr>
+    </table>
+    <p style="font-size:14px">This is the Arc System Works approach (Guilty Gear Xrd/Strive): artist-controlled shadow placement and inner lines baked into a control map, instead of trusting raw lighting.</p>
+  </div>
+  <div class="card">
+    <h3>Game shader upgrades</h3>
+    <ul class="tight">
+      <li><b>Toon material</b> samples the albedo and ink map: shadow threshold = N·L + bias, two-tone ink ramp, inner lines multiplied in, plus a hair/silk sheen band. Rim, flash and focus tint are kept.</li>
+      <li><b>Custom normals</b>: face normals transferred from a smooth head proxy give clean shadow shapes with no blotches around the nose and mouth. Hair normals come from a volume proxy, so each clump shades as one mass.</li>
+      <li><b>Outline</b>: expands along a stored <i>smoothed</i> normal, so it no longer cracks. Width comes from a vertex colour: thick at silhouettes, tapered at hair tips, none inside the eyes and mouth. Outlines also follow morphs.</li>
+      <li><b>Draw calls</b>: 3 materials (body/cloth atlas, hair, eyes) × 2 passes ≈ 6 per fighter, down from ~24.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>6 · Budgets <span class="han">規格</span></h2>
+<div class="grid g4">
+  <div class="card"><div class="stat">Triangles / fighter</div><div class="big">30–40k</div><div class="caption">today 9–14k of mostly hidden overlap</div></div>
+  <div class="card"><div class="stat">Bones</div><div class="big">≈ 75</div><div class="caption">20 shared + 30 finger + 4 twist + jaw + chains</div></div>
+  <div class="card"><div class="stat">Download / fighter</div><div class="big">≤ 1.6 MB</div><div class="caption">meshopt glb + webp textures (today ~0.55 MB)</div></div>
+  <div class="card"><div class="stat">Draw calls / fighter</div><div class="big">≈ 6</div><div class="caption">today ~24</div></div>
+</div>
+<p class="caption">Phones keep their current safeguards (adaptive resolution, no MSAA). If phone profiling shows a cost, a simplified LOD can be generated with gltf-transform.</p>
+
+<h2>7 · Build order <span class="han">次第</span></h2>
+<div class="milestone"><div class="n">1</div><div><b>Pipeline foundation.</b> Base-mesh extraction (a fetch script for the CC0 bundle, then a committed compact base-body file), shaping, skeleton fit, finger/twist/jaw bones, heat weights and transfer, a UV and paint-bake framework, ink prep, and a glTF export with textures and morphs.</div></div>
+<div class="milestone"><div class="n">2</div><div><b>Mu-jin as the pilot</b>, taken all the way to the quality bar: body, face, morphs, mane, coat layers, wraps, textures. Turnaround, pose and stress sheets.</div></div>
+<div class="milestone"><div class="n">3</div><div><b>Game integration:</b> the new ink material, smoothed-normal outline with morphs, the expression driver, hand poses in the anim library, and the optimizer handling textures. Checked in the running game.</div></div>
+<div class="milestone"><div class="n">4</div><div><b>Seol-hwa and Hyeon-gong</b> on the same pipeline: water sleeves on chains, a hair curtain, the kasaya grid, a beard, beads.</div></div>
+<div class="milestone"><div class="n">5</div><div><b>Regenerate the dependants:</b> portraits, OG card and icon. Run all 44 clips per fighter through clamp and intersection checks. Tests and build pass. Before/after sheets.</div></div>
+
+<h2>8 · What stays the same <span class="han">不變</span></h2>
+<div class="grid g3">
+  <div class="card"><b>Engine contract:</b> <code>game/public/assets/chars/&lt;id&gt;.glb/.json</code>, the bone names, clip names and lengths, event markers, and the chain metadata format (gaining optional fields only).</div>
+  <div class="card"><b>Animations:</b> the existing pose library and timing are kept. Poses gain hand shapes and expressions, and arm targets are re-checked against the new proportions.</div>
+  <div class="card"><b>Sim / netcode / AI:</b> no change. Hitboxes live in the integer sim, not in the mesh.</div>
+</div>
+
+<h2>9 · Questions <span class="han">問答</span></h2>
+<p>I'm building with the defaults below now. Reply at any point to steer.</p>
+<div class="qa"><div class="q">Q1. Should the base anatomy come from the CC0 Blender Studio Human Base Meshes?</div>
+<div class="why">Why I'm asking: until now every asset was generated from code. Production-quality human topology (face loops, fingers, joint loops) can't realistically be hand-coded to AAA standard. This CC0 mesh from Blender's own studio is what professionals start from. The build stays fully scripted: download, extract, reshape, dress.</div>
+<div class="def">Default: <b>yes</b>. A fetch script plus a compact extracted base file is committed, and the README credits Blender Studio (not required by CC0).</div></div>
+<div class="qa"><div class="q">Q2. Keep the current colour identities and costume concepts?</div>
+<div class="why">Why: they match the published art direction (steel, crimson, lavender, saffron) and the portraits and menus players already know. A redesign could also change palettes, but that ripples into UI accents.</div>
+<div class="def">Default: <b>keep the palette and concepts, redesign the construction and details</b> as described in section 3.</div></div>
+<div class="qa"><div class="q">Q3. Is a bigger download per fighter acceptable (≈0.55 MB → up to ~1.6 MB)?</div>
+<div class="why">Why: real textures and three times the triangles cost bytes. On slow mobile connections that adds about 2–3 s of loading for the first match. Texture size is the main lever (2048 vs 1024).</div>
+<div class="def">Default: <b>yes, within 1.6 MB</b>, with 2048 albedo and 1024 ink map. I'll report the actual sizes.</div></div>
+<div class="qa"><div class="q">Q4. Hyeon-gong with a bare right shoulder and arm (traditional kasaya drape)?</div>
+<div class="why">Why: it's the authentic way the robe is worn and makes the "iron body" read. The current model is fully covered, so this changes his look noticeably.</div>
+<div class="def">Default: <b>bare right arm</b> with an iron bracer, and the left arm sleeved.</div></div>
+<div class="qa"><div class="q">Q5. Deploy to the live site when finished?</div>
+<div class="why">Why: <code>./tools/deploy.sh</code> replaces what players see at pages.subir.dev/inkfist. You may want to look at it locally first.</div>
+<div class="def">Default: <b>no automatic deploy</b>. I'll leave everything built and ready and tell you the one command to run.</div></div>
+</div>
+</body>
+</html>

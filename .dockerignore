@@ -1,0 +1,13 @@
+# Only server/ and game/src are needed to build the server image.
+**/node_modules
+**/dist
+**/.wrangler
+**/.dev.vars
+.git
+.scratch
+blender
+docs
+tools
+game/public
+game/assets-src
+game/tests

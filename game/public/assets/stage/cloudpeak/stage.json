@@ -1,0 +1,46 @@
+{
+  "name": "Cloud Peak",
+  "nameKo": "운봉",
+  "nameZh": "雲峰",
+  "bg": "#e8dcc4",
+  "layers": [
+    {
+      "id": "sky",
+      "src": "sky.webp",
+      "z": -60.0,
+      "centerY": 11.0,
+      "width": 108.0,
+      "height": 54.0
+    },
+    {
+      "id": "far",
+      "src": "far.webp",
+      "z": -40.0,
+      "centerY": 5.0,
+      "width": 80.0,
+      "height": 32.0
+    },
+    {
+      "id": "mid",
+      "src": "mid.webp",
+      "z": -20.0,
+      "centerY": 5.4,
+      "width": 52.0,
+      "height": 20.8
+    },
+    {
+      "id": "near",
+      "src": "near.webp",
+      "z": -9.0,
+      "centerY": 5.75,
+      "width": 36.0,
+      "height": 12.0
+    }
+  ],
+  "floor": {
+    "src": "floor.webp",
+    "zNear": 8.0,
+    "zFar": -9.0,
+    "tileWidth": 16.0
+  }
+}

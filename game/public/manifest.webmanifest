@@ -1,0 +1,16 @@
+{
+  "name": "INKFIST 墨拳 — Murim Duels",
+  "short_name": "INKFIST",
+  "description": "Freestyle martial-arts duels in living ink. Online 1v1 or vs AI.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#e8dcc4",
+  "theme_color": "#1b1a17",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

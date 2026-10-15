@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022"],
+    "types": ["@cloudflare/workers-types"],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "../game/src/arena", "../game/src/sim", "../game/src/ai", "../game/src/ui/names.ts"],
+  "exclude": ["../game/src/arena/client.ts", "../game/src/arena/watch.ts"]
+}

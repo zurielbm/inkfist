@@ -1,0 +1,644 @@
+{
+ "id": "hyeongong",
+ "clips": {
+  "idle": {
+   "length": 90,
+   "loop": true,
+   "events": {}
+  },
+  "walk_f": {
+   "length": 26,
+   "loop": true,
+   "events": {}
+  },
+  "walk_b": {
+   "length": 30,
+   "loop": true,
+   "events": {}
+  },
+  "jump": {
+   "length": 14,
+   "loop": false,
+   "events": {}
+  },
+  "fall": {
+   "length": 16,
+   "loop": false,
+   "events": {}
+  },
+  "land": {
+   "length": 10,
+   "loop": false,
+   "events": {}
+  },
+  "jump2": {
+   "length": 24,
+   "loop": false,
+   "events": {}
+  },
+  "dash_f": {
+   "length": 18,
+   "loop": false,
+   "events": {}
+  },
+  "dash_b": {
+   "length": 18,
+   "loop": false,
+   "events": {}
+  },
+  "airdash": {
+   "length": 14,
+   "loop": false,
+   "events": {}
+  },
+  "guard": {
+   "length": 5,
+   "loop": false,
+   "events": {}
+  },
+  "guard_hit": {
+   "length": 12,
+   "loop": false,
+   "events": {}
+  },
+  "deflect": {
+   "length": 16,
+   "loop": false,
+   "events": {
+    "hit": 3
+   }
+  },
+  "hit_s": {
+   "length": 18,
+   "loop": false,
+   "events": {}
+  },
+  "hit_h": {
+   "length": 24,
+   "loop": false,
+   "events": {}
+  },
+  "hit_air": {
+   "length": 12,
+   "loop": false,
+   "events": {}
+  },
+  "launch": {
+   "length": 14,
+   "loop": false,
+   "events": {}
+  },
+  "knockdown": {
+   "length": 22,
+   "loop": false,
+   "events": {}
+  },
+  "down": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "getup": {
+   "length": 24,
+   "loop": false,
+   "events": {}
+  },
+  "wall": {
+   "length": 20,
+   "loop": false,
+   "events": {}
+  },
+  "stagger": {
+   "length": 30,
+   "loop": false,
+   "events": {}
+  },
+  "crumple": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "burst": {
+   "length": 20,
+   "loop": false,
+   "events": {
+    "hit": 4
+   }
+  },
+  "focus_charge": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "s1": {
+   "length": 23,
+   "loop": false,
+   "events": {
+    "hit": 7
+   }
+  },
+  "s2": {
+   "length": 28,
+   "loop": false,
+   "events": {
+    "hit": 9
+   }
+  },
+  "s3": {
+   "length": 36,
+   "loop": false,
+   "events": {
+    "hit": 12
+   }
+  },
+  "s_f": {
+   "length": 40,
+   "loop": false,
+   "events": {
+    "hit": 14
+   }
+  },
+  "s_u": {
+   "length": 39,
+   "loop": false,
+   "events": {
+    "hit": 11
+   }
+  },
+  "s_d": {
+   "length": 35,
+   "loop": false,
+   "events": {
+    "hit": 11
+   }
+  },
+  "s_air": {
+   "length": 26,
+   "loop": false,
+   "events": {
+    "hit": 8
+   }
+  },
+  "h": {
+   "length": 47,
+   "loop": false,
+   "events": {
+    "hit": 18
+   }
+  },
+  "h_f": {
+   "length": 46,
+   "loop": false,
+   "events": {
+    "hit": 18
+   }
+  },
+  "h_d": {
+   "length": 49,
+   "loop": false,
+   "events": {
+    "hit": 20
+   }
+  },
+  "h_air": {
+   "length": 36,
+   "loop": false,
+   "events": {
+    "hit": 12
+   }
+  },
+  "h_air_d": {
+   "length": 22,
+   "loop": false,
+   "events": {
+    "hit": 12
+   }
+  },
+  "focus_release": {
+   "length": 42,
+   "loop": false,
+   "events": {
+    "hit": 8
+   }
+  },
+  "art_n": {
+   "length": 54,
+   "loop": false,
+   "events": {
+    "hit": 4
+   }
+  },
+  "counter": {
+   "length": 30,
+   "loop": false,
+   "events": {
+    "hit": 6
+   }
+  },
+  "art_f": {
+   "length": 48,
+   "loop": false,
+   "events": {
+    "hit": 14
+   }
+  },
+  "throw": {
+   "length": 60,
+   "loop": false,
+   "events": {
+    "hit": 6,
+    "slam": 40
+   }
+  },
+  "art_d": {
+   "length": 52,
+   "loop": false,
+   "events": {
+    "hit": 20
+   }
+  },
+  "secret": {
+   "length": 120,
+   "loop": false,
+   "events": {
+    "hit": 30,
+    "finish": 90
+   }
+  },
+  "intro": {
+   "length": 40,
+   "loop": false,
+   "events": {}
+  },
+  "win": {
+   "length": 64,
+   "loop": false,
+   "events": {}
+  }
+ },
+ "chains": [
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.24,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.8,
+   "follow": "thigh_L",
+   "follow_amount": 0.3,
+   "bones": [
+    "cloth_fl_1",
+    "cloth_fl_2",
+    "cloth_fl_3"
+   ],
+   "name": "cloth_fl",
+   "points": [
+    [
+     0.1205,
+     1.0611,
+     0.1493
+    ],
+    [
+     0.1338,
+     0.8459,
+     0.1655
+    ],
+    [
+     0.1472,
+     0.6308,
+     0.1818
+    ],
+    [
+     0.1606,
+     0.4156,
+     0.198
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.24,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.8,
+   "bones": [
+    "cloth_bl_1",
+    "cloth_bl_2",
+    "cloth_bl_3"
+   ],
+   "name": "cloth_bl",
+   "points": [
+    [
+     0.1609,
+     1.0611,
+     -0.1117
+    ],
+    [
+     0.1787,
+     0.8459,
+     -0.1244
+    ],
+    [
+     0.1966,
+     0.6308,
+     -0.1372
+    ],
+    [
+     0.2145,
+     0.4156,
+     -0.1499
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.24,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.8,
+   "bones": [
+    "cloth_br_1",
+    "cloth_br_2",
+    "cloth_br_3"
+   ],
+   "name": "cloth_br",
+   "points": [
+    [
+     -0.1609,
+     1.0611,
+     -0.1117
+    ],
+    [
+     -0.1787,
+     0.8459,
+     -0.1244
+    ],
+    [
+     -0.1966,
+     0.6308,
+     -0.1372
+    ],
+    [
+     -0.2145,
+     0.4156,
+     -0.1499
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.24,
+   "damping": 0.85,
+   "gravity": 0.55,
+   "drag": 0.8,
+   "follow": "thigh_R",
+   "follow_amount": 0.3,
+   "bones": [
+    "cloth_fr_1",
+    "cloth_fr_2",
+    "cloth_fr_3"
+   ],
+   "name": "cloth_fr",
+   "points": [
+    [
+     -0.1485,
+     1.0611,
+     0.1293
+    ],
+    [
+     -0.165,
+     0.8459,
+     0.1433
+    ],
+    [
+     -0.1815,
+     0.6308,
+     0.1573
+    ],
+    [
+     -0.198,
+     0.4156,
+     0.1713
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "chest",
+   "stiffness": 0.3,
+   "damping": 0.82,
+   "gravity": 0.9,
+   "drag": 0.4,
+   "margin": 0.03,
+   "bones": [
+    "beads_1",
+    "beads_2"
+   ],
+   "name": "beads",
+   "points": [
+    [
+     0.0,
+     1.5102,
+     0.1114
+    ],
+    [
+     0.0,
+     1.3602,
+     0.1289
+    ],
+    [
+     0.0,
+     1.2102,
+     0.1464
+    ]
+   ]
+  },
+  {
+   "kind": "hair",
+   "parent": "head",
+   "stiffness": 0.3,
+   "damping": 0.82,
+   "gravity": 0.4,
+   "drag": 0.6,
+   "margin": 0.02,
+   "bones": [
+    "beard_1",
+    "beard_2",
+    "beard_3"
+   ],
+   "name": "beard",
+   "points": [
+    [
+     0.0,
+     1.6286,
+     0.1613
+    ],
+    [
+     0.0,
+     1.5626,
+     0.1679
+    ],
+    [
+     0.0,
+     1.4966,
+     0.1745
+    ],
+    [
+     0.0,
+     1.4286,
+     0.1813
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.12,
+   "damping": 0.86,
+   "gravity": 0.7,
+   "drag": 1.0,
+   "bones": [
+    "sash_a_1",
+    "sash_a_2",
+    "sash_a_3"
+   ],
+   "name": "sash_a",
+   "points": [
+    [
+     -0.12,
+     1.0511,
+     0.178
+    ],
+    [
+     -0.1267,
+     0.9378,
+     0.1814
+    ],
+    [
+     -0.1333,
+     0.8245,
+     0.1847
+    ],
+    [
+     -0.14,
+     0.7111,
+     0.188
+    ]
+   ]
+  },
+  {
+   "kind": "cloth",
+   "parent": "hips",
+   "stiffness": 0.12,
+   "damping": 0.86,
+   "gravity": 0.7,
+   "drag": 1.0,
+   "bones": [
+    "sash_b_1",
+    "sash_b_2",
+    "sash_b_3"
+   ],
+   "name": "sash_b",
+   "points": [
+    [
+     -0.15,
+     1.0511,
+     0.178
+    ],
+    [
+     -0.1567,
+     0.9645,
+     0.1814
+    ],
+    [
+     -0.1633,
+     0.8778,
+     0.1847
+    ],
+    [
+     -0.17,
+     0.7911,
+     0.188
+    ]
+   ]
+  }
+ ],
+ "height": 1.88,
+ "colliders": [
+  {
+   "bone": "hips",
+   "to": "spine",
+   "radius": 0.1285,
+   "length": 0.1649
+  },
+  {
+   "bone": "spine",
+   "to": "chest",
+   "radius": 0.1703,
+   "length": 0.1918
+  },
+  {
+   "bone": "chest",
+   "to": "neck",
+   "radius": 0.1667,
+   "length": 0.2481
+  },
+  {
+   "bone": "head",
+   "to": null,
+   "radius": 0.0953,
+   "length": 0.1664
+  },
+  {
+   "bone": "thigh_L",
+   "to": "shin_L",
+   "radius": 0.0842,
+   "length": 0.3855
+  },
+  {
+   "bone": "shin_L",
+   "to": "foot_L",
+   "radius": 0.0459,
+   "length": 0.4475
+  },
+  {
+   "bone": "thigh_R",
+   "to": "shin_R",
+   "radius": 0.084,
+   "length": 0.3855
+  },
+  {
+   "bone": "shin_R",
+   "to": "foot_R",
+   "radius": 0.0456,
+   "length": 0.4475
+  },
+  {
+   "bone": "upper_arm_L",
+   "to": "forearm_L",
+   "radius": 0.0662,
+   "length": 0.3062
+  },
+  {
+   "bone": "forearm_L",
+   "to": "hand_L",
+   "radius": 0.0502,
+   "length": 0.2805
+  },
+  {
+   "bone": "upper_arm_R",
+   "to": "forearm_R",
+   "radius": 0.0666,
+   "length": 0.3079
+  },
+  {
+   "bone": "forearm_R",
+   "to": "hand_R",
+   "radius": 0.0507,
+   "length": 0.2806
+  }
+ ]
+}

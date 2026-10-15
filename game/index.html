@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>INKFIST 墨拳 — Freestyle murim duels in living ink</title>
+  <meta name="description" content="A free browser fighting game in ink-wash manhwa style. Freestyle combos, deflects, qinggong and secret arts. Duel friends online or fight the AI." />
+  <meta name="theme-color" content="#e8dcc4" />
+  <link rel="icon" type="image/png" href="./icon.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="INKFIST" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="INKFIST 墨拳 — Murim Duels" />
+  <meta property="og:description" content="Freestyle martial-arts duels in living ink. Play free in your browser — online 1v1 or vs AI." />
+  <meta property="og:url" content="https://pages.subir.dev/inkfist/" />
+  <meta property="og:image" content="https://pages.subir.dev/inkfist/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="INKFIST 墨拳 — Murim Duels" />
+  <meta name="twitter:description" content="Freestyle martial-arts duels in living ink. Play free in your browser." />
+  <meta name="twitter:image" content="https://pages.subir.dev/inkfist/og.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Serif+KR:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="game"></canvas>
+    <div id="hud" class="hidden"></div>
+    <div id="cutin" class="hidden"></div>
+    <div id="touch" class="hidden"></div>
+    <div class="rotate armed">Turn your device sideways to fight 🔄<br><small style="font-weight:400">INKFIST plays in landscape.</small></div>
+    <div id="ui">
+      <section id="loading" class="screen show">
+        <div class="load-wrap">
+          <div class="logo"><span class="logo-en">INKFIST</span><span class="logo-han">墨拳</span></div>
+          <div class="logo-sub">MURIM DUELS</div>
+          <div class="load-bar"><i id="load-fill"></i></div>
+          <div id="load-label" class="load-label">Grinding ink…</div>
+          <div id="load-tip" class="load-tip">Deflect beats Focus. Read the red glow.</div>
+        </div>
+        <a id="load-sponsor" class="sponsor" target="_blank" rel="noopener"></a>
+      </section>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

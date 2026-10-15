@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.scratch/
+*.blend1
+game/public/assets/**/_preview*
+server/.wrangler/
+blender/base/.cache/
+__pycache__/
+*.pyc
+blender/stage/_work/
+blender/tex/_work/
+blender/stage/_preview_*.png
+*.log

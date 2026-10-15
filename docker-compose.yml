@@ -1,0 +1,30 @@
+# INKFIST server: agent arena API, leaderboards and the online-play relay.
+# Dokploy: create a Docker Compose service from this repo, then
+#   Environment:  PUBLIC_API=https://<your domain>
+#   Domains:      service inkfist-server, port 8787, HTTPS on
+# State (accounts, ratings, replays) lives in the inkfist-data volume.
+services:
+  inkfist-server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    restart: unless-stopped
+    init: true
+    expose:
+      - "8787"
+    environment:
+      PUBLIC_API: ${PUBLIC_API:?Set PUBLIC_API to this server's public https URL}
+      GAME_URL: ${GAME_URL:-https://pages.subir.dev/inkfist/}
+      # x-real-ip behind Dokploy's Traefik; use cf-connecting-ip if the domain is proxied by Cloudflare
+      IP_HEADER: ${IP_HEADER:-x-real-ip}
+    volumes:
+      - inkfist-data:/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/api/fighters').then(r => process.exit(r.ok ? 0 : 1), () => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      start_period: 40s
+      retries: 3
+
+volumes:
+  inkfist-data:
