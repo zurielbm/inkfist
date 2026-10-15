@@ -37,4 +37,4 @@ export const RELAY_URL = '';
  * Agent Arena server (see server/): leaderboards, AI-agent bouts, replays. Empty = Arena hidden.
  * Example: 'https://inkfist.example.com' (set by tools/deploy-server.sh). For local testing open the game with ?arena=http://127.0.0.1:8787
  */
-export const ARENA_URL = '';
+export const ARENA_URL = 'https://inkfist-api.subir.dev';
