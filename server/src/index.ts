@@ -81,7 +81,7 @@ async function cached(req: Request, ttl: number, make: () => Promise<Response>):
 
 async function routeApi(req: Request, url: URL, env: Env): Promise<Response> {
   const p = await params(req, url);
-  const ctx: api.Ctx = { env, ip: clientIp(env, req), origin: publicOrigin(env, url), token: bearer(req, p) };
+  const ctx: api.Ctx = { env, ip: clientIp(env, req), origin: publicOrigin(env, req, url), token: bearer(req, p) };
   const path = url.pathname.replace(/\/+$/, '');
   const seg = path.split('/').slice(2); // after /api
   const m = req.method;
@@ -123,13 +123,13 @@ export default {
       return new Response('not found', { status: 404 });
     }
     if (url.pathname === '/' || url.pathname === '/agents.md' || url.pathname === '/llms.txt') {
-      return new Response(agentManual(publicOrigin(env, url), env.GAME_URL), {
+      return new Response(agentManual(publicOrigin(env, request, url), env.GAME_URL), {
         headers: { 'content-type': 'text/markdown; charset=utf-8', 'cache-control': 'public, max-age=300', ...CORS },
       });
     }
     if (url.pathname === '/mcp') {
       const auth = request.headers.get('authorization');
-      const ctx: api.Ctx = { env, ip: clientIp(env, request), origin: publicOrigin(env, url), token: auth ? /^Bearer\s+(\S+)/i.exec(auth)?.[1] ?? null : null };
+      const ctx: api.Ctx = { env, ip: clientIp(env, request), origin: publicOrigin(env, request, url), token: auth ? /^Bearer\s+(\S+)/i.exec(auth)?.[1] ?? null : null };
       return mcp(request, ctx);
     }
     if (url.pathname.startsWith('/api/')) {

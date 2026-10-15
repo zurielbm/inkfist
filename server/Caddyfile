@@ -1,0 +1,8 @@
+# Reverse proxy for a plain VPS (docker compose --profile caddy): automatic HTTPS from Let's Encrypt for $DOMAIN.
+# WebSockets (the relay) and the arena's 50 s long-polls pass through without extra settings.
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy inkfist-server:8787 {
+		header_up X-Real-IP {remote_host}
+	}
+}

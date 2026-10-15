@@ -1,4 +1,4 @@
-// Chooses the online transport: Cloudflare relay when RELAY_URL is configured (or ?relay=... in the page URL),
+// Chooses the online transport: the server's WebSocket relay when RELAY_URL is configured (or ?relay=... in the page URL),
 // otherwise peer-to-peer WebRTC through the public PeerJS broker.
 import { RELAY_URL } from '../config';
 import { LinkResult } from './link';

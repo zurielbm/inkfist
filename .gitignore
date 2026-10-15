@@ -11,3 +11,5 @@ blender/stage/_work/
 blender/tex/_work/
 blender/stage/_preview_*.png
 *.log
+.env
+.dev.vars

@@ -45,7 +45,7 @@ node tools/arena-agent.mjs --api http://127.0.0.1:8787 --mode challenge --code K
 cd game && ARENA_URL=http://127.0.0.1:8787 npx vitest run tests/arena-e2e.test.ts
 ```
 
-Going live is a one-time setup: `cd server && npx wrangler login && npm run deploy`. Then put the printed URL in `ARENA_URL` (`game/src/config.ts`) and `PUBLIC_API` (`server/wrangler.jsonc`), run `npm run deploy` again, and run `./tools/deploy.sh`. `tools/deploy-server.sh` does all of this. To self-host instead (Docker, e.g. Dokploy), use the root `docker-compose.yml` (see [`server/README.md`](server/README.md#self-hosting-docker--dokploy)), then `./tools/deploy-server.sh https://<your domain>`.
+Going live: run the server on your VPS with the root `docker-compose.yml` (see [`server/README.md`](server/README.md#on-your-vps)), then `./tools/deploy-server.sh https://<your domain>` points the game at it and republishes the game.
 
 ## Phones & tablets
 
@@ -65,8 +65,8 @@ Touch controls turn on automatically on phones and tablets. You can also force t
 | `SPONSOR` | The ad-sponsor slot on the loading and menu screens: name, tagline, url, and an optional logo. |
 | `GAME_URL` | The public URL used in X share posts. |
 | `ICE_SERVERS` | STUN/TURN servers for WebRTC. Add a TURN server to support players behind strict NATs. |
-| `RELAY_URL` | Optional Cloudflare relay (see [`server/README.md`](server/README.md)). When set, online play goes through it instead of peer-to-peer. |
-| `ARENA_URL` | The Agent Arena server (same worker as the relay). When set, the Arena menu, ranked results and `agents.md` go live. For testing, add `?arena=<url>` to the page URL. |
+| `RELAY_URL` | Optional WebSocket relay on your INKFIST server (see [`server/README.md`](server/README.md)). When set, online play goes through it instead of peer-to-peer. |
+| `ARENA_URL` | The Agent Arena server (the same server as the relay). When set, the Arena menu, ranked results and `agents.md` go live. For testing, add `?arena=<url>` to the page URL. |
 
 ## How it's built
 
@@ -93,8 +93,8 @@ cd game && npm run optimize                             # meshopt-compress chara
 
 ## Known limitations (MVP)
 
-- Online play is peer-to-peer by default. A minority of strict networks (some corporate or mobile carriers) can't connect without TURN. The Cloudflare relay in `server/` fixes this once it's deployed (`npx wrangler login && npm run deploy`, then set `RELAY_URL`).
+- Online play is peer-to-peer by default. A minority of strict networks (some corporate or mobile carriers) can't connect without TURN. The relay on your INKFIST server fixes this: `./tools/deploy-server.sh https://<your domain> --relay`.
 - Matchmaking uses the free public PeerJS broker. If it's down, online modes show an error, and AI and local play still work.
 - Rounds are best-of-3 with a 60-second timer.
-- The Arena needs the server deployed (Cloudflare or Docker). Until then it's hidden (use `?arena=` with a local server).
+- The Arena needs the server running on your VPS (Docker). Until then it's hidden (use `?arena=` with a local server).
 - Agent labels ("Gemini", "Claude") are self-reported. Results are replay-verified, but nothing proves which model drove the HTTP calls.

@@ -1,4 +1,4 @@
-// WebSocket relay transport (server/: Cloudflare Worker + Durable Objects). Same surface as PeerLink.
+// WebSocket relay transport (server/: Lobby + Room Durable Objects). Same surface as PeerLink.
 import { NetChannel } from './rollback';
 import { randomCode } from './peer';
 

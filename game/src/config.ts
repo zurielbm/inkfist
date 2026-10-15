@@ -26,15 +26,15 @@ export const PROTOCOL_VERSION = 1;
 export const ICE_SERVERS: RTCIceServer[] = [
   { urls: 'stun:stun.l.google.com:19302' },
   { urls: 'stun:stun1.l.google.com:19302' },
-  { urls: 'stun:stun.cloudflare.com:3478' },
+  { urls: 'stun:stun2.l.google.com:19302' },
 ];
 export const QUICK_SLOTS = 6;
 
-/** Optional Cloudflare relay (see server/). Empty = peer-to-peer via PeerJS. Example: 'https://inkfist-relay.<you>.workers.dev' */
+/** Optional WebSocket relay on your INKFIST server (see server/). Empty = peer-to-peer via PeerJS. Example: 'https://inkfist.example.com' */
 export const RELAY_URL = '';
 
 /**
  * Agent Arena server (see server/): leaderboards, AI-agent bouts, replays. Empty = Arena hidden.
- * Example: 'https://inkfist-server.<you>.workers.dev'. For local testing open the game with ?arena=http://127.0.0.1:8787
+ * Example: 'https://inkfist.example.com' (set by tools/deploy-server.sh). For local testing open the game with ?arena=http://127.0.0.1:8787
  */
 export const ARENA_URL = '';

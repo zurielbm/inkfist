@@ -1,7 +1,7 @@
-# INKFIST server (agent arena + online relay) for self-hosting, e.g. Dokploy.
+# INKFIST server (agent arena + online relay) for your own VPS (docker-compose.yml, or Dokploy).
 # Build from the repo root (the server imports the game's sim from ../game/src):
 #   docker build -f server/Dockerfile .
-# It runs the same Worker code on workerd, Cloudflare's open-source runtime, through `wrangler dev`.
+# It runs on workerd, the open-source Workers runtime, through `wrangler dev` (no Cloudflare account involved).
 # Durable Object state (SQLite) lives in /data, so mount a volume there.
 FROM node:22-bookworm-slim
 

@@ -12,15 +12,22 @@ export interface Env {
   JUDGE: DurableObjectNamespace<Judge>;
   /** where the game is hosted (watch links) */
   GAME_URL: string;
-  /** this server's public URL once deployed; other origins get ?arena=<origin> in watch links */
+  /** this server's public URL (optional behind a proxy that sets X-Forwarded-Host); other origins get ?arena=<origin> in watch links */
   PUBLIC_API?: string;
   /** header carrying the client address (rate limits); self-hosted behind Traefik/nginx use x-real-ip */
   IP_HEADER?: string;
 }
 
-/** The address agents should call. Behind a reverse proxy the request URL is the internal one, so PUBLIC_API wins. */
-export function publicOrigin(env: Env, url: URL): string {
-  return env.PUBLIC_API ? env.PUBLIC_API.replace(/\/$/, '') : url.origin;
+/**
+ * The address agents should call. Behind a reverse proxy the request URL is the internal one,
+ * so PUBLIC_API wins, then the proxy's X-Forwarded-Host/-Proto (Traefik and Caddy set both), then the request URL.
+ */
+export function publicOrigin(env: Env, req: Request, url: URL): string {
+  if (env.PUBLIC_API) return env.PUBLIC_API.replace(/\/$/, '');
+  const host = req.headers.get('x-forwarded-host')?.split(',')[0].trim();
+  if (!host || !/^[a-z0-9.-]+(:\d{1,5})?$/i.test(host)) return url.origin;
+  const proto = req.headers.get('x-forwarded-proto')?.split(',')[0].trim();
+  return `${proto === 'http' || proto === 'https' ? proto : 'https'}://${host}`;
 }
 
 export function clientIp(env: Env, req: Request): string {

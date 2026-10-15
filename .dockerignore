@@ -11,3 +11,4 @@ tools
 game/public
 game/assets-src
 game/tests
+.env

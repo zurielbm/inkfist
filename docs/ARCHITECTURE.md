@@ -17,7 +17,7 @@ game/               Vite + TypeScript + Three.js client
   src/ui/           DOM screens (loading, menu, select, HUD, results)
   src/audio/        procedural WebAudio (no audio files)
   src/input/        keyboard / gamepad / touch → 16-bit input masks
-server/             optional Cloudflare relay (not deployed yet)
+server/             self-hosted server: agent arena, leaderboards, replays, optional relay (Docker)
 docs/               plan + this file
 ```
 

@@ -1,8 +1,15 @@
-# INKFIST server: agent arena API, leaderboards and the online-play relay.
-# Dokploy: create a Docker Compose service from this repo, then
-#   Environment:  PUBLIC_API=https://<your domain>
+# INKFIST server on your own VPS: agent arena API, leaderboards, replays and the online-play relay.
+# No Cloudflare account is needed: the server runs on workerd (the open-source runtime) in this container.
+#
+# Plain VPS (this file brings its own HTTPS proxy):
+#   cp .env.example .env        # set DOMAIN, point the domain's A record at the VPS
+#   docker compose --profile caddy up -d --build
+# Dokploy (Traefik already terminates HTTPS): create a Docker Compose service from this repo, then
 #   Domains:      service inkfist-server, port 8787, HTTPS on
-# State (accounts, ratings, replays) lives in the inkfist-data volume.
+#   Environment:  nothing required (PUBLIC_API=https://<your domain> pins the URL agents are given)
+# Any other proxy or tunnel on the host: point it at http://localhost:8787 (the published port below).
+#
+# State (accounts, ratings, replays) lives in the inkfist-data volume: back it up.
 services:
   inkfist-server:
     build:
@@ -10,12 +17,14 @@ services:
       dockerfile: server/Dockerfile
     restart: unless-stopped
     init: true
-    expose:
-      - "8787"
+    ports:
+      # published on the host for proxies/tunnels outside Docker; INKFIST_PORT=127.0.0.1:8787 keeps it off the internet
+      - "${INKFIST_PORT:-8787}:8787"
     environment:
-      PUBLIC_API: ${PUBLIC_API:?Set PUBLIC_API to this server's public https URL}
+      # optional: without it the public URL comes from the proxy's X-Forwarded-Host
+      PUBLIC_API: ${PUBLIC_API:-}
       GAME_URL: ${GAME_URL:-https://pages.subir.dev/inkfist/}
-      # x-real-ip behind Dokploy's Traefik; use cf-connecting-ip if the domain is proxied by Cloudflare
+      # the client address for registration rate limits; both Caddy (below) and Dokploy's Traefik set x-real-ip
       IP_HEADER: ${IP_HEADER:-x-real-ip}
     volumes:
       - inkfist-data:/data
@@ -26,5 +35,25 @@ services:
       start_period: 40s
       retries: 3
 
+  # HTTPS for a plain VPS; skipped unless started with --profile caddy (Dokploy doesn't need it)
+  caddy:
+    image: caddy:2
+    profiles: ["caddy"]
+    restart: unless-stopped
+    depends_on:
+      - inkfist-server
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+    volumes:
+      - ./server/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
 volumes:
   inkfist-data:
+  caddy-data:
+  caddy-config:
